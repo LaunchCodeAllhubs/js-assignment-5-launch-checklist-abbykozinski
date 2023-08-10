@@ -33,6 +33,7 @@ function formSubmission (document, list, pilot, copilot, fuelLevel, cargoLevel) 
     let fuelStatus = document.getElementById('fuelStatus');
     let launchStatus = document.getElementById('launchStatus');
     let cargoStatus = document.getElementById('cargoStatus');
+    list.style.visibility = 'hidden'
     //check all fields are filled
     if (validateInput(pilot) === `Empty`|| validateInput(copilot) === `Empty`|| 
     validateInput(fuelLevel) === `Empty`||validateInput(cargoLevel) === `Empty`) {
@@ -48,8 +49,7 @@ function formSubmission (document, list, pilot, copilot, fuelLevel, cargoLevel) 
     //update pilot/copilot status
     pilotStatus.innerHTML = `Pilot ${pilot} is ready`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready`;
-    pilotStatus.style.visibility = 'hidden';
-    copilotStatus.style.visibility = 'hidden';
+    list.style.visibility = 'hidden';
     }
     //check fuel levels and update faulty items
     if (Number(fuelLevel) < 10000) {
