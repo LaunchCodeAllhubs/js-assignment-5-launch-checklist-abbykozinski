@@ -51,7 +51,7 @@ function formSubmission (document, list, pilot, copilot, fuelLevel, cargoLevel) 
     list.style.visibility = 'visible';
     }
     //check fuel levels and update faulty items
-    if (Number(fuelLevel) < 10000) {
+    if (Int(fuelLevel) < 10000) {
         fuelStatus.innerHTML = `Not enough fuel for journey`;
         list.style.visibility = 'visible';
         launchStatus.innerHTML = `Shuttle not ready for launch`;
@@ -61,7 +61,7 @@ function formSubmission (document, list, pilot, copilot, fuelLevel, cargoLevel) 
         list.style.visibility = `visible`;
         launchStatus.innerHTML = `Shuttle Not Ready for Launch`;
         launchStatus.style.color = `rgb(199, 37, 78)`;
-    } else if (Number(cargoLevel) < 10000 && Number(fuelLevel) >= 10000) {
+    } else if (Number(cargoLevel) < 10000 && Int(fuelLevel) >= 10000) {
         list.style.visibility = `visible`;
         fuelStatus.innerHTML = `Fuel level high enough for launch`;
         cargoStatus.innerHTML = `Cargo mass low enough for launch`;
