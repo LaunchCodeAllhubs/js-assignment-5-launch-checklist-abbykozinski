@@ -2,7 +2,7 @@
 
 window.addEventListener("load", ()=> {
     const form = document.querySelector("form");
-    let list = window.document.getElementById('faultyItems');
+    let list = document.getElementById('faultyItems');
     list.styles.visibility = "hidden"
 
     form.addEventListener("submit", (event)=>{
