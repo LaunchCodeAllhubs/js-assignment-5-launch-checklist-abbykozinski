@@ -1,6 +1,7 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", ()=> {
+    list.style.visibility = 'hidden'
     const form = document.querySelector("form");
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
