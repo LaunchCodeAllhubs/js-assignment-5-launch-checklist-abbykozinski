@@ -1,87 +1,37 @@
-window.addEventListener("load", function() {
-	let form = document.querySelector("form");
+// Write your JavaScript code here!
 
-	form.addEventListener("submit", function(event) {
-		event.preventDefault();
-		event.stopPropagation();
+window.addEventListener("load", ()=> {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (event)=>{
+        event.preventDefault();
+        //List DOM
+        let pilot = document.querySelector("input[name=pilotName]").value;
+        let copilot = document.querySelector("input[name=copilotName]").value;
+        let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
+        let cargoLevel = document.querySelector("input[name=cargoMass]").value;
+        let list = document.getElementById('faultyItems');
 
-		let items = window.document.getElementById('faultyItems');
-		let launchStatus = window.document.getElementById('launchStatus');
-		let fuelStatus = window.document.getElementById('fuelStatus');
-		let cargoStatus = window.document.getElementById('cargoStatus')
-		let ready = true;
+        //use formsubmission to validate and update list
+        formSubmission(document,list,pilot,copilot,fuelLevel,cargoLevel);
+    })
 
-		let pilotName = document.querySelector("input[name=pilotName]").value;
-		let copilotName = document.querySelector("input[name=copilotName]").value;
-		let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
-		let cargoMass = document.querySelector("input[name=cargoMass]").value;
-
-		if (pilotName === "" || copilotName === "" || fuelLevel === '' || isNaN(fuelLevel) || cargoMass === '' || isNaN(cargoMass) ) {
-
-			alert("All fields are required!");
-			items.style.visibility = 'hidden';
-
-			launchStatus.style.color = 'black';
-			launchStatus.innerHTML = 'Awaiting Information Before Launch';
-
-		} else {
-
-			items.style.visibility = 'visible';
-
-			document.getElementById('pilotStatus').innerHTML = `Pilot ${ pilotName + ' ' }Ready`
-			document.getElementById('copilotStatus').innerHTML = `Co-pilot ${ copilotName + ' ' }Ready`
-
-			if (fuelLevel < 10000) {
-				ready = false;
-				fuelStatus.innerHTML = 'Not enough fuel for launch';
-			} else {
-				fuelStatus.innerHTML = 'Fuel level high enough for launch';
-			}
-
-			if (cargoMass > 10000) {
-				ready = false;
-				cargoStatus.innerHTML = 'Too much mass for the shuttle to take off';
-			} else {
-				cargoStatus.innerHTML = 'Cargo mass low enough for launch';
-			}
-
-			if (ready) {
-				launchStatus.style.color = 'green';
-				launchStatus.innerHTML = 'Shuttle is ready for launch';
-				retrieveData();
-			} else {
-				items.style.visibility = 'visible';
-				launchStatus.style.color = 'red';
-				launchStatus.innerHTML = 'Shuttle not ready for launch';
-			}
-
-		}
-
-	});
+   let listedPlanets;
+   // Set listedPlanetsResponse equal to the value returned by calling myFetch()
+   let listedPlanetsResponse = myFetch();
+   listedPlanetsResponse.then(function (result) {
+       listedPlanets = result;
+       console.log(listedPlanets);
+   }).then(function () {
+       console.log(listedPlanets);
+       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+       let planet = pickPlanet(listedPlanets);
+       let name = planet.name;
+       let diameter = planet.diameter;
+       let star = planet.star;
+       let distance = planet.distance;
+       let imageUrl = planet.image;
+       let moons = planet.moons;
+       addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl);
+    })
+   
 });
-
-
-function retrieveData() {
-
-	fetch('https://handlers.education.launchcode.org/static/planets.json').then( function (response) {
-		response.json().then(function (data) {
-			let targets = document.getElementById('missionTarget');
-			let random = Math.round(Math.random() * data.length);
-			let target = data[random];
-
-			targets.innerHTML =
-				`<h2>Mission Destination</h2>
-				<ol>
-				   <li>Name: ${target.name}</li>
-				   <li>Diameter: ${target.diameter}</li>
-				   <li>Star: ${target.stat}</li>
-				   <li>Distance from Earth: ${target.distance}</li>
-				   <li>Number of Moons: ${target.moons}</li>
-				</ol>
-				<img src="${target.image}">`
-
-
-		});
-	})
-
-}
