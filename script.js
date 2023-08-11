@@ -2,8 +2,8 @@
 
 window.addEventListener("load", ()=> {
     const form = document.querySelector("form");
-    let list = form.getElementById('faultyItems');
-    list.styles.visibility = 'hidden'
+    let list = window.document.getElementById('faultyItems');
+    list.styles.visibility = 'inherit'
 
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
