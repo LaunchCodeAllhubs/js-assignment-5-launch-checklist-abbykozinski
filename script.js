@@ -5,11 +5,11 @@ window.addEventListener("load", ()=> {
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
         //List DOM
-        let pilot = document.querySelector("input[name=pilotName]").value;
-        let copilot = document.querySelector("input[name=copilotName]").value;
-        let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
-        let cargoLevel = document.querySelector("input[name=cargoMass]").value;
-        let list = document.getElementById('faultyItems');
+        let pilot = form.querySelector("input[name=pilotName]").value;
+        let copilot = form.querySelector("input[name=copilotName]").value;
+        let fuelLevel = form.querySelector("input[name=fuelLevel]").value;
+        let cargoLevel = form.querySelector("input[name=cargoMass]").value;
+        let list = form.getElementById('faultyItems');
 
         //use formsubmission to validate and update list
         formSubmission(document,list,pilot,copilot,fuelLevel,cargoLevel);
