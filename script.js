@@ -2,6 +2,7 @@
 
 window.addEventListener("load", ()=> {
     const form = document.querySelector("form");
+    list.styles.visibility ="hidden"
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
         //List DOM
