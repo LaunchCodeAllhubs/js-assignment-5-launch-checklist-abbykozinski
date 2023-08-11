@@ -47,8 +47,8 @@ function formSubmission (document, list, pilot, copilot, fuelLevel, cargoLevel) 
     } 
     else {
     //update pilot/copilot status
-    pilotStatus.innerHTML = `Pilot ${pilot} is ready`;
-    copilotStatus.innerHTML = `Co-pilot ${copilot} is ready`;
+    pilotStatus.innerHTML = `Pilot ${pilot} ready`;
+    copilotStatus.innerHTML = `Co-pilot ${copilot} ready`;
     checkList.style.visibility = 'hidden';
     }
     //check fuel levels and update faulty items
