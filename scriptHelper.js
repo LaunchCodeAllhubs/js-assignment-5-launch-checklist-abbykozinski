@@ -37,6 +37,7 @@ function formSubmission (document, list, pilot, copilot, fuelLevel, cargoLevel) 
     if (validateInput(pilot) === "" || validateInput(copilot) === ""|| 
     validateInput(fuelLevel) === "" || validateInput(cargoLevel) === "") {
         alert(`All fields are required`);
+        list.style.visibility = 'hidden'
     }
     //check that fuelLevel and cargoLevel are numbers and pilot and co-pilot are strings
     else if (validateInput(fuelLevel) === 'Not a Number' || validateInput(cargoLevel) === 'Not a Number') {
