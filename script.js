@@ -5,10 +5,10 @@ window.addEventListener("load", function() {
 		event.preventDefault();
 		event.stopPropagation();
 
-		let items = document.getElementById('faultyItems');
-		let launchStatus = document.getElementById('launchStatus');
-		let fuelStatus = document.getElementById('fuelStatus');
-		let cargoStatus = document.getElementById('cargoStatus')
+		let items = window.document.getElementById('faultyItems');
+		let launchStatus = window.document.getElementById('launchStatus');
+		let fuelStatus = window.document.getElementById('fuelStatus');
+		let cargoStatus = window.document.getElementById('cargoStatus')
 		let ready = true;
 
 		let pilotName = document.querySelector("input[name=pilotName]").value;
