@@ -2,6 +2,8 @@
 
 window.addEventListener("load", ()=> {
     const form = document.querySelector("form");
+    let list = form.getElementById('faultyItems');
+    list.styles.visibility = 'hidden'
 
     form.addEventListener("submit", (event)=>{
         event.preventDefault();
@@ -10,8 +12,7 @@ window.addEventListener("load", ()=> {
         let copilot = form.querySelector("input[name=copilotName]").value;
         let fuelLevel = form.querySelector("input[name=fuelLevel]").value;
         let cargoLevel = form.querySelector("input[name=cargoMass]").value;
-        let list = form.getElementById('faultyItems');
-        list.styles.visibility ='hidden'
+        
 
         //use formsubmission to validate and update list
         formSubmission(document,list,pilot,copilot,fuelLevel,cargoLevel);
