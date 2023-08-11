@@ -49,7 +49,7 @@ function formSubmission (document, list, pilot, copilot, fuelLevel, cargoLevel) 
     //update pilot/copilot status
     pilotStatus.innerHTML = `Pilot ${pilot} is ready`;
     copilotStatus.innerHTML = `Co-pilot ${copilot} is ready`;
-    list.style.visibility = 'hidden';
+    fullList.style.visibility = 'hidden';
     }
     //check fuel levels and update faulty items
     if (Number(fuelLevel) < 10000) {
